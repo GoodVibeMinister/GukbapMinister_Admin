@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 
 
 final class StoreReportManager: ObservableObject {

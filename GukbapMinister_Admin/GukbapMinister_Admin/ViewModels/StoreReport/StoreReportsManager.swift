@@ -22,7 +22,7 @@ final class StoreReportsMananger: ObservableObject {
     private var database = Firestore.firestore()
     private var listenerRegistration: ListenerRegistration?
     
-    func unsubscribeStores() {
+    func unsubscribeStoreReports() {
         if listenerRegistration != nil {
             listenerRegistration?.remove()
             listenerRegistration = nil

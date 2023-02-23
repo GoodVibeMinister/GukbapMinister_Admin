@@ -10,13 +10,7 @@ import SwiftUI
 struct StoreReportManagementView: View {
     @StateObject var reportsManager = StoreReportsMananger()
     var body: some View {
-        VStack {
-            if reportsManager.storeReports.isEmpty {
-                Spacer()
-                Text("아직까지 새로들어온 장소제보가 없습니다.")
-                Spacer()
-            }
-            
+        
             List {
                 if !reportsManager.usefulReports.isEmpty {
                     Section {
@@ -48,10 +42,8 @@ struct StoreReportManagementView: View {
                 reportsManager.subscribeStoreReports()
             }
             .onDisappear {
-                reportsManager.unsubscribeStores()
+                reportsManager.unsubscribeStoreReports()
             }
-
-        }// VStack Ended
     }
     
     @ViewBuilder
