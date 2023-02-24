@@ -37,7 +37,7 @@ final class StoreInfoManager: ObservableObject {
     }
     
     // 이미지URL을 sdweb에서 요구하는 방식으로 생성하고 storeImageUrls에 append
-     func loadImageUrl(_ storeInfo: Store) {
+     private func loadImageUrl(_ storeInfo: Store) {
         if let _ = storeInfo.id {
             for imageName in storeInfo.storeImages {
                 let ref = storage.reference().child("storeImages/\(storeInfo.storeName)/\(imageName)")
@@ -48,7 +48,7 @@ final class StoreInfoManager: ObservableObject {
         }
     }
     
-    func addStoreInfo() {
+    private func addStoreInfo() {
         do {
             let _ = try database.collection("Store")
                 .addDocument(from: self.storeInfo)
@@ -58,7 +58,7 @@ final class StoreInfoManager: ObservableObject {
         }
     }
     
-    func updateStoreInfo(_ storeInfo: Store) {
+    private func updateStoreInfo(_ storeInfo: Store) {
         if let documentId = storeInfo.id {
             do {
                 try database.collection("Store")
@@ -78,6 +78,14 @@ final class StoreInfoManager: ObservableObject {
                     print(error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    func handleDoneTapped() {
+        if let _ = self.storeInfo.id {
+            updateStoreInfo(self.storeInfo)
+        } else {
+            addStoreInfo()
         }
     }
 }

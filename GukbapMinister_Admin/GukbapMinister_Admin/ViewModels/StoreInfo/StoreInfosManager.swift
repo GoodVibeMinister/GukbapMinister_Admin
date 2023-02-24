@@ -13,6 +13,18 @@ import FirebaseFirestore
 
 final class StoreInfosManager: ObservableObject {
     @Published var stores: [Store] = []
+    @Published var filter: Gukbaps = .전체 {
+        willSet(newValue) {
+            if newValue == .전체 {
+                filteredStores = []
+            } else {
+                filteredStores = stores.filter { $0.foodType.contains(newValue.rawValue)}
+            }
+        }
+    }
+    @Published var filteredStores: [Store] = []
+    
+    
     
     private var database = Firestore.firestore()
     private var listenerRegistration: ListenerRegistration?
@@ -38,5 +50,7 @@ final class StoreInfosManager: ObservableObject {
                 }
         }
     }
+    
+   
     
 }
