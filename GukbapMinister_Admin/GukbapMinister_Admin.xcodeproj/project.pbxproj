@@ -7,18 +7,60 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B9974094CAC7B2BF925613C /* Pods_GukbapMinister_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59581F2C4A9FF90DBE47343 /* Pods_GukbapMinister_Admin.framework */; };
 		5BB9350829A7045800AB409B /* GukbapMinister_AdminApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9350729A7045800AB409B /* GukbapMinister_AdminApp.swift */; };
 		5BB9350A29A7045800AB409B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9350929A7045800AB409B /* ContentView.swift */; };
 		5BB9350C29A7045B00AB409B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB9350B29A7045B00AB409B /* Assets.xcassets */; };
 		5BB9350F29A7045B00AB409B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB9350E29A7045B00AB409B /* Preview Assets.xcassets */; };
+		5BB9351629A7071B00AB409B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BB9351529A7071B00AB409B /* GoogleService-Info.plist */; };
+		5BB9352129A720E700AB409B /* UserManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9352029A720E700AB409B /* UserManagementView.swift */; };
+		5BB9352329A720FF00AB409B /* StoreInfoManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9352229A720FF00AB409B /* StoreInfoManagementView.swift */; };
+		5BB9352529A7211900AB409B /* StoreRegistrationManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9352429A7211900AB409B /* StoreRegistrationManagementView.swift */; };
+		5BB9352729A7215700AB409B /* StoreReportManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9352629A7215700AB409B /* StoreReportManagementView.swift */; };
+		5BB9352E29A7221B00AB409B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9352D29A7221B00AB409B /* UserManager.swift */; };
+		5BB9353029A7222800AB409B /* StoreInfosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9352F29A7222800AB409B /* StoreInfosManager.swift */; };
+		5BB9353229A7223700AB409B /* StoreRegistrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9353129A7223600AB409B /* StoreRegistrationManager.swift */; };
+		5BB9353429A7224300AB409B /* StoreReportsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9353329A7224300AB409B /* StoreReportsManager.swift */; };
+		5BB9353729A7228C00AB409B /* StoreReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9353629A7228C00AB409B /* StoreReport.swift */; };
+		5BB9353929A722D500AB409B /* StoreRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9353829A722D500AB409B /* StoreRegistration.swift */; };
+		5BB9353C29A7233500AB409B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9353B29A7233500AB409B /* User.swift */; };
+		5BB9353E29A7235B00AB409B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9353D29A7235B00AB409B /* Review.swift */; };
+		5BB9354029A7239000AB409B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9353F29A7239000AB409B /* Store.swift */; };
+		5BB9354229A7267A00AB409B /* StoreReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9354129A7267A00AB409B /* StoreReportManager.swift */; };
+		5BB9354529A72D8800AB409B /* StoreReportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9354429A72D8800AB409B /* StoreReportDetailView.swift */; };
+		5BB9354929A750F300AB409B /* StoreInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9354829A750F300AB409B /* StoreInfoDetailView.swift */; };
+		5BB9354B29A7514B00AB409B /* StoreInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9354A29A7514B00AB409B /* StoreInfoManager.swift */; };
+		5BB9354E29A8A53200AB409B /* Gukbaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9354D29A8A53200AB409B /* Gukbaps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D887AFAAB61E86AE84F9459 /* Pods-GukbapMinister_Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GukbapMinister_Admin.debug.xcconfig"; path = "Target Support Files/Pods-GukbapMinister_Admin/Pods-GukbapMinister_Admin.debug.xcconfig"; sourceTree = "<group>"; };
 		5BB9350429A7045800AB409B /* GukbapMinister_Admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GukbapMinister_Admin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB9350729A7045800AB409B /* GukbapMinister_AdminApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GukbapMinister_AdminApp.swift; sourceTree = "<group>"; };
 		5BB9350929A7045800AB409B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BB9350B29A7045B00AB409B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BB9350E29A7045B00AB409B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5BB9351529A7071B00AB409B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5BB9352029A720E700AB409B /* UserManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementView.swift; sourceTree = "<group>"; };
+		5BB9352229A720FF00AB409B /* StoreInfoManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoManagementView.swift; sourceTree = "<group>"; };
+		5BB9352429A7211900AB409B /* StoreRegistrationManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRegistrationManagementView.swift; sourceTree = "<group>"; };
+		5BB9352629A7215700AB409B /* StoreReportManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReportManagementView.swift; sourceTree = "<group>"; };
+		5BB9352D29A7221B00AB409B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		5BB9352F29A7222800AB409B /* StoreInfosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfosManager.swift; sourceTree = "<group>"; };
+		5BB9353129A7223600AB409B /* StoreRegistrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRegistrationManager.swift; sourceTree = "<group>"; };
+		5BB9353329A7224300AB409B /* StoreReportsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReportsManager.swift; sourceTree = "<group>"; };
+		5BB9353629A7228C00AB409B /* StoreReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReport.swift; sourceTree = "<group>"; };
+		5BB9353829A722D500AB409B /* StoreRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRegistration.swift; sourceTree = "<group>"; };
+		5BB9353B29A7233500AB409B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5BB9353D29A7235B00AB409B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		5BB9353F29A7239000AB409B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		5BB9354129A7267A00AB409B /* StoreReportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReportManager.swift; sourceTree = "<group>"; };
+		5BB9354429A72D8800AB409B /* StoreReportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReportDetailView.swift; sourceTree = "<group>"; };
+		5BB9354829A750F300AB409B /* StoreInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoDetailView.swift; sourceTree = "<group>"; };
+		5BB9354A29A7514B00AB409B /* StoreInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoManager.swift; sourceTree = "<group>"; };
+		5BB9354D29A8A53200AB409B /* Gukbaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gukbaps.swift; sourceTree = "<group>"; };
+		9AC3AE26740C80CF8A9C5335 /* Pods-GukbapMinister_Admin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GukbapMinister_Admin.release.xcconfig"; path = "Target Support Files/Pods-GukbapMinister_Admin/Pods-GukbapMinister_Admin.release.xcconfig"; sourceTree = "<group>"; };
+		A59581F2C4A9FF90DBE47343 /* Pods_GukbapMinister_Admin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GukbapMinister_Admin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +68,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B9974094CAC7B2BF925613C /* Pods_GukbapMinister_Admin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30B708B01A4B29A461C32CCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A59581F2C4A9FF90DBE47343 /* Pods_GukbapMinister_Admin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5BB934FB29A7045800AB409B = {
 			isa = PBXGroup;
 			children = (
+				5BB9351529A7071B00AB409B /* GoogleService-Info.plist */,
 				5BB9350629A7045800AB409B /* GukbapMinister_Admin */,
 				5BB9350529A7045800AB409B /* Products */,
+				79A15DF520643EF6908AA786 /* Pods */,
+				30B708B01A4B29A461C32CCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,6 +107,10 @@
 			children = (
 				5BB9350729A7045800AB409B /* GukbapMinister_AdminApp.swift */,
 				5BB9350929A7045800AB409B /* ContentView.swift */,
+				5BB9354F29A8A54800AB409B /* Enums */,
+				5BB9352829A7216200AB409B /* Views */,
+				5BB9353529A7227500AB409B /* ViewModels */,
+				5BB9353A29A7232300AB409B /* Models */,
 				5BB9350B29A7045B00AB409B /* Assets.xcassets */,
 				5BB9350D29A7045B00AB409B /* Preview Content */,
 			);
@@ -67,6 +125,109 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5BB9352829A7216200AB409B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9352929A7216C00AB409B /* User */,
+				5BB9352A29A7217900AB409B /* StoreInfo */,
+				5BB9352B29A7218900AB409B /* StoreRegistration */,
+				5BB9352C29A7219300AB409B /* StoreReport */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5BB9352929A7216C00AB409B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9352029A720E700AB409B /* UserManagementView.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		5BB9352A29A7217900AB409B /* StoreInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9352229A720FF00AB409B /* StoreInfoManagementView.swift */,
+				5BB9354829A750F300AB409B /* StoreInfoDetailView.swift */,
+			);
+			path = StoreInfo;
+			sourceTree = "<group>";
+		};
+		5BB9352B29A7218900AB409B /* StoreRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9352429A7211900AB409B /* StoreRegistrationManagementView.swift */,
+			);
+			path = StoreRegistration;
+			sourceTree = "<group>";
+		};
+		5BB9352C29A7219300AB409B /* StoreReport */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9352629A7215700AB409B /* StoreReportManagementView.swift */,
+				5BB9354429A72D8800AB409B /* StoreReportDetailView.swift */,
+			);
+			path = StoreReport;
+			sourceTree = "<group>";
+		};
+		5BB9353529A7227500AB409B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9352D29A7221B00AB409B /* UserManager.swift */,
+				5BB9354C29A7514F00AB409B /* StoreInfo */,
+				5BB9353129A7223600AB409B /* StoreRegistrationManager.swift */,
+				5BB9354329A7268000AB409B /* StoreReport */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5BB9353A29A7232300AB409B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9353B29A7233500AB409B /* User.swift */,
+				5BB9353D29A7235B00AB409B /* Review.swift */,
+				5BB9353F29A7239000AB409B /* Store.swift */,
+				5BB9353629A7228C00AB409B /* StoreReport.swift */,
+				5BB9353829A722D500AB409B /* StoreRegistration.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5BB9354329A7268000AB409B /* StoreReport */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9353329A7224300AB409B /* StoreReportsManager.swift */,
+				5BB9354129A7267A00AB409B /* StoreReportManager.swift */,
+			);
+			path = StoreReport;
+			sourceTree = "<group>";
+		};
+		5BB9354C29A7514F00AB409B /* StoreInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9352F29A7222800AB409B /* StoreInfosManager.swift */,
+				5BB9354A29A7514B00AB409B /* StoreInfoManager.swift */,
+			);
+			path = StoreInfo;
+			sourceTree = "<group>";
+		};
+		5BB9354F29A8A54800AB409B /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9354D29A8A53200AB409B /* Gukbaps.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		79A15DF520643EF6908AA786 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D887AFAAB61E86AE84F9459 /* Pods-GukbapMinister_Admin.debug.xcconfig */,
+				9AC3AE26740C80CF8A9C5335 /* Pods-GukbapMinister_Admin.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,15 +235,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BB9351229A7045B00AB409B /* Build configuration list for PBXNativeTarget "GukbapMinister_Admin" */;
 			buildPhases = (
+				02C5F8E58C962FBE3FD69E0F /* [CP] Check Pods Manifest.lock */,
 				5BB9350029A7045800AB409B /* Sources */,
 				5BB9350129A7045800AB409B /* Frameworks */,
 				5BB9350229A7045800AB409B /* Resources */,
+				ACE8162CD865D8F1A2838E8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = GukbapMinister_Admin;
+			packageProductDependencies = (
+			);
 			productName = GukbapMinister_Admin;
 			productReference = 5BB9350429A7045800AB409B /* GukbapMinister_Admin.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +276,8 @@
 				Base,
 			);
 			mainGroup = 5BB934FB29A7045800AB409B;
+			packageReferences = (
+			);
 			productRefGroup = 5BB9350529A7045800AB409B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,18 +294,79 @@
 			files = (
 				5BB9350F29A7045B00AB409B /* Preview Assets.xcassets in Resources */,
 				5BB9350C29A7045B00AB409B /* Assets.xcassets in Resources */,
+				5BB9351629A7071B00AB409B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02C5F8E58C962FBE3FD69E0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GukbapMinister_Admin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACE8162CD865D8F1A2838E8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GukbapMinister_Admin/Pods-GukbapMinister_Admin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GukbapMinister_Admin/Pods-GukbapMinister_Admin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GukbapMinister_Admin/Pods-GukbapMinister_Admin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5BB9350029A7045800AB409B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB9354029A7239000AB409B /* Store.swift in Sources */,
+				5BB9353C29A7233500AB409B /* User.swift in Sources */,
+				5BB9353729A7228C00AB409B /* StoreReport.swift in Sources */,
 				5BB9350A29A7045800AB409B /* ContentView.swift in Sources */,
+				5BB9354929A750F300AB409B /* StoreInfoDetailView.swift in Sources */,
+				5BB9354B29A7514B00AB409B /* StoreInfoManager.swift in Sources */,
+				5BB9352729A7215700AB409B /* StoreReportManagementView.swift in Sources */,
+				5BB9352E29A7221B00AB409B /* UserManager.swift in Sources */,
+				5BB9353429A7224300AB409B /* StoreReportsManager.swift in Sources */,
+				5BB9354229A7267A00AB409B /* StoreReportManager.swift in Sources */,
+				5BB9353229A7223700AB409B /* StoreRegistrationManager.swift in Sources */,
+				5BB9353929A722D500AB409B /* StoreRegistration.swift in Sources */,
+				5BB9352329A720FF00AB409B /* StoreInfoManagementView.swift in Sources */,
+				5BB9353E29A7235B00AB409B /* Review.swift in Sources */,
+				5BB9354529A72D8800AB409B /* StoreReportDetailView.swift in Sources */,
+				5BB9352129A720E700AB409B /* UserManagementView.swift in Sources */,
+				5BB9353029A7222800AB409B /* StoreInfosManager.swift in Sources */,
+				5BB9354E29A8A53200AB409B /* Gukbaps.swift in Sources */,
 				5BB9350829A7045800AB409B /* GukbapMinister_AdminApp.swift in Sources */,
+				5BB9352529A7211900AB409B /* StoreRegistrationManagementView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -261,6 +489,7 @@
 		};
 		5BB9351329A7045B00AB409B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D887AFAAB61E86AE84F9459 /* Pods-GukbapMinister_Admin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -290,6 +519,7 @@
 		};
 		5BB9351429A7045B00AB409B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AC3AE26740C80CF8A9C5335 /* Pods-GukbapMinister_Admin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
