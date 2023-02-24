@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct StoreInfoDetailView: View {
     @ObservedObject var manager = StoreInfoManager()
@@ -14,15 +15,32 @@ struct StoreInfoDetailView: View {
             Text(manager.storeInfo.storeName)
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(manager.storeInfo.storeImages, id: \.self) { imageId in
-                        StoreImage(storeName: manager.storeInfo.storeName, imageId: imageId)
-                           
+                    ForEach(manager.storeImageUrls, id: \.self) { imageURL in
+                        //이렇게 사용하는 이유는 권고사항이기 때문
+                        //https://github.com/SDWebImage/SDWebImageSwiftUI#common-problems
+                        StoreImageView(imageURL: imageURL)
                     }
                 }
             }
             .frame(height: 120)
         }
         .padding()
+       
+    }
+    
+}
+
+struct StoreImageView: View {
+    var imageURL: URL
+    var body: some View {
+        VStack{
+            WebImage(url: imageURL)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100)
+        }
+        .padding()
+                  
     }
 }
 

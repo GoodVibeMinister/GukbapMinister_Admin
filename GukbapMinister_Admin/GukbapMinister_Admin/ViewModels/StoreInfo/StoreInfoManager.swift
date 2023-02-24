@@ -10,11 +10,13 @@ import Combine
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
+import SDWebImageSwiftUI
 
 
 
 final class StoreInfoManager: ObservableObject {
     @Published var storeInfo: Store
+    @Published var storeImageUrls: [URL] = []
     @Published var modified = false
     
     private var cancellables = Set<AnyCancellable>()
@@ -30,14 +32,18 @@ final class StoreInfoManager: ObservableObject {
                 self?.modified = true
             }
             .store(in: &self.cancellables)
+        
+        loadImageUrl(storeInfo)
     }
     
-    
-    func fetchStoreImage(_ storeInfo: Store) {
+    // 이미지URL을 sdweb에서 요구하는 방식으로 생성하고 storeImageUrls에 append
+     func loadImageUrl(_ storeInfo: Store) {
         if let _ = storeInfo.id {
             for imageName in storeInfo.storeImages {
                 let ref = storage.reference().child("storeImages/\(storeInfo.storeName)/\(imageName)")
                 
+                let storageURL = NSURL.sd_URL(with: ref) as URL?
+                self.storeImageUrls.append(storageURL!)
             }
         }
     }
