@@ -107,9 +107,9 @@
 			children = (
 				5BB9350729A7045800AB409B /* GukbapMinister_AdminApp.swift */,
 				5BB9350929A7045800AB409B /* ContentView.swift */,
-				5BB9353A29A7232300AB409B /* Models */,
-				5BB9353529A7227500AB409B /* ViewModels */,
 				5BB9352829A7216200AB409B /* Views */,
+				5BB9353529A7227500AB409B /* ViewModels */,
+				5BB9353A29A7232300AB409B /* Models */,
 				5BB9350B29A7045B00AB409B /* Assets.xcassets */,
 				5BB9350D29A7045B00AB409B /* Preview Content */,
 			);

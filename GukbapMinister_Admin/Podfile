@@ -17,4 +17,6 @@ target 'GukbapMinister_Admin' do
     pod 'FirebaseFirestore'
     pod 'FirebaseStorage'
     pod 'FirebaseFirestoreSwift'
+
+    pod 'SDWebImageSwiftUI'
 end

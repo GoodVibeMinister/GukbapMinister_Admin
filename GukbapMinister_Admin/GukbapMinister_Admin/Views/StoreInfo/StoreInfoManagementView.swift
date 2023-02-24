@@ -14,36 +14,39 @@ struct StoreInfoManagementView: View {
     
     
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading, spacing: 0) {
-                ForEach(manager.stores) { store in
-                    NavigationLink {
-                        StoreInfoDetailView(manager: StoreInfoManager(storeInfo: store))
-                    } label: {
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(store.storeName)
-                                .font(.headline)
-                                .foregroundColor(scheme == .light ? .black : .white)
-                            Text(store.storeAddress)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                                .padding(.vertical, 2)
+        NavigationStack {
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 0) {
+                    ForEach(manager.stores) { store in
+                        NavigationLink {
+                            StoreInfoDetailView(manager: StoreInfoManager(storeInfo: store))
+                        } label: {
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(store.storeName)
+                                    .font(.headline)
+                                    .foregroundColor(scheme == .light ? .black : .white)
+                                Text(store.storeAddress)
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                                    .padding(.vertical, 2)
+                            }
                         }
+                        .padding(.vertical, 6)
+                        
+                        Divider()
                     }
-                    .padding(.vertical, 6)
-                    
-                    Divider()
                 }
+                
+            }
+            .padding()
+            .onAppear {
+                manager.subscribeStoreInfos()
+            }
+            .onDisappear {
+                manager.unsubscribeStoreInfos()
             }
         }
         .searchable(text: $searchText)
-        .padding()
-        .onAppear {
-            manager.subscribeStoreInfos()
-        }
-        .onDisappear {
-            manager.unsubscribeStoreInfos()
-        }
     }
 }
 
