@@ -41,7 +41,6 @@ struct ContentView: View {
                         Text("국밥집 제보목록")
                     }
                     .tag(4)
-                
             }
         
         

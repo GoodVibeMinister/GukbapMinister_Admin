@@ -53,42 +53,8 @@ struct StoreInfoDetailView: View {
         NavigationStack{
             List {
                 infoOnMap
-                
-              
-                    HStack {
-                        Spacer()
-                        Group {
-                            Image("Ggakdugi")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20)
-                                .padding(.leading)
-                            Text(String(format: "%.2f", manager.storeInfo.countingStar))
-                                .padding(.trailing)
-                        }
-                        
-                        Divider()
-                        
-                        Group {
-                            Image(systemName: "suit.heart.fill")
-                                .padding(.leading)
-                            Text("\(manager.storeInfo.likes)")
-                                .padding(.trailing)
-                        }
-                        
-                        Divider()
-                        
-                        Group {
-                            Image(systemName: "eye.fill")
-                                .padding(.leading)
-                            Text("\(manager.storeInfo.hits)")
-                                .padding(.trailing)
-                        }
-                        Spacer()
-                    }
-                    .font(.caption)
-                
-             
+
+                storeEvaluation
                 
                 storeDescription
                 
@@ -109,20 +75,25 @@ struct StoreInfoDetailView: View {
     var infoOnMap: some View {
         Section {
             HStack {
-                Text("상호명")
+                Text("상호")
                     .font(.headline)
+                Divider()
                 TextField("상호명", text: $manager.storeInfo.storeName)
             }
             
-            HStack {
-                Text("주소")
-                    .font(.headline)
-                TextField("주소", text: $manager.storeInfo.storeAddress)
+            NavigationLink {
+                EditAddressView(manager: manager)
+            } label: {
+                HStack {
+                    Text("주소")
+                        .font(.headline)
+                    Divider()
+                    Text(manager.storeInfo.storeAddress)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
-            
+
             latlong
-            
-            
         }
     }
     var latlong: some View {
@@ -134,9 +105,7 @@ struct StoreInfoDetailView: View {
                     Divider()
                     Text("\(manager.storeInfo.coordinate.latitude)")
                 }
-                .frame(width: geo.size.width / 2)
                 
-                Spacer()
                 
                 HStack {
                     Text("경도")
@@ -144,10 +113,46 @@ struct StoreInfoDetailView: View {
                     Divider()
                     Text("\(manager.storeInfo.coordinate.longitude)")
                 }
-                .frame(width: geo.size.width / 2)
+                
+                Spacer()
+                
             }
         }
         .foregroundColor(.secondary)
+    }
+    var storeEvaluation: some View {
+        HStack {
+            Spacer()
+            Group {
+                Image("Ggakdugi")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+                    .padding(.leading)
+                Text(String(format: "%.2f", manager.storeInfo.countingStar))
+                    .padding(.trailing)
+            }
+            
+            Divider()
+            
+            Group {
+                Image(systemName: "suit.heart.fill")
+                    .padding(.leading)
+                Text("\(manager.storeInfo.likes)")
+                    .padding(.trailing)
+            }
+            
+            Divider()
+            
+            Group {
+                Image(systemName: "eye.fill")
+                    .padding(.leading)
+                Text("\(manager.storeInfo.hits)")
+                    .padding(.trailing)
+            }
+            Spacer()
+        }
+        .font(.caption)
     }
     var storeDescription: some View {
         Section {
