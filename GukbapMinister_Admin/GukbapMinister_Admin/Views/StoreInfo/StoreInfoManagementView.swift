@@ -17,7 +17,7 @@ struct StoreInfoManagementView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                HStack(alignment: .bottom, spacing: 4) {
+                HStack(spacing: 4) {
                     Text(manager.filter == .전체 ? "전체" : "총")
                         .font(.title2)
                         .bold()
@@ -32,9 +32,6 @@ struct StoreInfoManagementView: View {
                         }
                     }
                     .pickerStyle(.menu)
-                   
-                   
-                    
                 }
                 .padding(.horizontal)
                 
