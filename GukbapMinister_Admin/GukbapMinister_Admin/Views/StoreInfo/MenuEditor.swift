@@ -56,11 +56,13 @@ struct MenuEditor: View {
 
                     
                     Button {
-                        manager.storeInfo.menu.removeValue(forKey: menu)
+                        if mode == .edit {
+                            manager.storeInfo.menu.removeValue(forKey: menu)
+                        }
                         manager.storeInfo.menu[newMenu] = newPrice
                         presentSheet = false
                     } label: {
-                        Text("수정완료")
+                        Text(mode == .new ? "추가하기": "수정완료")
                     }
                     .disabled(newMenu == "" || newPrice == "")
                 }
