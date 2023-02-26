@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import MapKit
 import CoreLocation
 import FirebaseFirestore
 
-enum GeocodingProcess {
+enum GeocodingStatus {
     case none
     case cannotFindAddress
     case cannotFindCoordinate
@@ -29,8 +30,8 @@ enum GeocodingProcess {
 struct EditAddressView: View {
     @ObservedObject var manager: StoreInfoManager
     @State private var newAdress: String = ""
-    
-    @State private var geocodingStatus: GeocodingProcess = .none
+    @State private var geocodingStatus: GeocodingStatus = .none
+  
     
     var body: some View {
         Form {
@@ -38,13 +39,18 @@ struct EditAddressView: View {
                 Text("기존주소")
                     .font(.headline)
                 Text(manager.storeInfo.storeAddress)
+                MapUIView(region: MKCoordinateRegion(center: .init(latitude: manager.storeInfo.coordinate.latitude,
+                                                                   longitude: manager.storeInfo.coordinate.longitude),
+                                                     latitudinalMeters: 500,
+                                                     longitudinalMeters: 500))
+                .frame(height: 150)
             }
             
             Section {
                 Text("변경할 주소")
                     .font(.headline)
                 HStack {
-                    TextField("변경할 주소 입략", text: $newAdress)
+                    TextField("변경할 주소 입력", text: $newAdress)
                         .onChange(of: newAdress) { _ in
                             geocodingStatus = .none
                         }
@@ -99,8 +105,11 @@ struct EditAddressView: View {
         }
     }
     
+    
+    /// 주소를 위도경도로 변환하는 함수
     func forwardGeocoding(address: String) {
         let geocoder = CLGeocoder()
+        
         geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
                 self.geocodingStatus = .cannotFindAddress
@@ -115,17 +124,12 @@ struct EditAddressView: View {
             
             if let location = location {
                 let coordinate = location.coordinate
-                manager.storeInfo.coordinate = GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                manager.storeInfo.coordinate = GeoPoint(latitude: coordinate.latitude,
+                                                        longitude: coordinate.longitude)
                 self.geocodingStatus = .success
             } else {
                 self.geocodingStatus = .cannotFindCoordinate
             }
         })
-    }
-}
-
-struct EditAddressView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditAddressView(manager: StoreInfoManager())
     }
 }

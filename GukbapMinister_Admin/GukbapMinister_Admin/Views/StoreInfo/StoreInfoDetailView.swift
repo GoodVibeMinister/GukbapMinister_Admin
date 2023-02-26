@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+
 
 enum Mode {
     case new
@@ -52,7 +52,7 @@ struct StoreInfoDetailView: View {
     var body: some View {
         NavigationStack{
             List {
-                infoOnMap
+                storeNameAndAddress
 
                 storeEvaluation
                 
@@ -72,7 +72,7 @@ struct StoreInfoDetailView: View {
         }
     }
     
-    var infoOnMap: some View {
+    var storeNameAndAddress: some View {
         Section {
             HStack {
                 Text("상호")
@@ -281,19 +281,7 @@ struct StoreInfoDetailView: View {
 }
 
 
-struct StoreImageView: View {
-    var imageURL: URL
-    var body: some View {
-        VStack{
-            WebImage(url: imageURL)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 100)
-        }
-        .padding()
-        
-    }
-}
+
 
 struct StoreInfoDetailView_Previews: PreviewProvider {
     static var previews: some View {
