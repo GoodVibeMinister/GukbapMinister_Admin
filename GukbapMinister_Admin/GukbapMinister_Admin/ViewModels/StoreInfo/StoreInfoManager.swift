@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 import Combine
 import Firebase
 import FirebaseFirestore

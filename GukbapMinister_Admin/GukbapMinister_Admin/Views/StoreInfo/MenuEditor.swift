@@ -54,7 +54,6 @@ struct MenuEditor: View {
                         }
                     }
 
-                    
                     Button {
                         if mode == .edit {
                             manager.storeInfo.menu.removeValue(forKey: menu)
@@ -71,20 +70,19 @@ struct MenuEditor: View {
                 
                 Form {
                     HStack {
+                        Text("메뉴")
                         TextField(menu, text: $newMenu )
                         Divider()
+                        Text("가격")
                         TextField(price, text: $newPrice)
                     }
                     .textInputAutocapitalization(.never)
                     .disableAutocorrection(true)
                 }
-                
             }
         }
         .presentationDetents([.height(200)])
-    
     }
-    
 }
 
 
