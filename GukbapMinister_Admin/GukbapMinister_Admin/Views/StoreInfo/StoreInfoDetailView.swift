@@ -62,7 +62,7 @@ struct StoreInfoDetailView: View {
                 
                 storeMenus
                 
-                storeImages
+                EditImagesView(manager: manager)
             }
         }
         .toolbar {
@@ -235,50 +235,8 @@ struct StoreInfoDetailView: View {
             Text("가게메뉴")
         }
     }
-    var storeImages: some View {
-        VStack {
-            if manager.storeImageUrls.isEmpty {
-                HStack {
-                    Spacer()
-                    Button {
-                        //TODO: 사진 추가하기
-                    } label: {
-                        VStack {
-                            Image(systemName: "plus.circle")
-                                .font(.title)
-                                .padding()
-                            Text("사진추가하기")
-                        }
-                    }
-                    Spacer()
-                }
-            } else {
-                ScrollView(.horizontal) {
-                    LazyHStack {
-                        ForEach(manager.storeImageUrls, id: \.self) { imageURL in
-                            //이렇게 사용하는 이유는 권고사항이기 때문
-                            //https://github.com/SDWebImage/SDWebImageSwiftUI#common-problems
-                            StoreImageView(imageURL: imageURL)
-                        }
-                        
-                        Button {
-                            //TODO: 사진 추가하기
-                        } label: {
-                            VStack {
-                                Image(systemName: "plus.circle")
-                                    .font(.title)
-                                    .padding()
-                                Text("사진추가하기")
-                            }
-                        }
-                    }
-                }
-                .frame(height: 120)
-            }
-        }
-    }
-    
 }
+
 
 
 
