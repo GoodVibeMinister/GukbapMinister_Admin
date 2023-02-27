@@ -1,5 +1,5 @@
 //
-//  StoreImageView.swift
+//  DownloadedStoreImage.swift
 //  GukbapMinister_Admin
 //
 //  Created by Martin on 2023/02/25.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct StoreImageView: View {
+struct DownloadedStoreImage: View {
     var imageURL: URL
     var body: some View {
         VStack{
@@ -16,8 +16,9 @@ struct StoreImageView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 100, height: 100)
+                .clipShape(Rectangle())
         }
-        .padding()
+        .padding(5)
         
     }
 }

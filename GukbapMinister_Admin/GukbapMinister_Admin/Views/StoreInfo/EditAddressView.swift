@@ -31,7 +31,7 @@ struct EditAddressView: View {
     @ObservedObject var manager: StoreInfoManager
     @State private var newAdress: String = ""
     @State private var geocodingStatus: GeocodingStatus = .none
-  
+    
     
     var body: some View {
         Form {
@@ -110,7 +110,7 @@ struct EditAddressView: View {
     func forwardGeocoding(address: String) {
         let geocoder = CLGeocoder()
         
-        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
             if error != nil {
                 self.geocodingStatus = .cannotFindAddress
                 return
@@ -130,6 +130,6 @@ struct EditAddressView: View {
             } else {
                 self.geocodingStatus = .cannotFindCoordinate
             }
-        })
+        }
     }
 }
