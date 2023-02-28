@@ -15,54 +15,75 @@ struct StoreInfoManagementView: View {
 
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                HStack(spacing: 4) {
-                    Text(manager.filter == .전체 ? "전체" : "총")
-                        .font(.title2)
-                        .bold()
-                    Text("\(manager.filter == .전체 ? manager.stores.count : manager.filteredStores.count)개")
-                    
-                    Spacer()
-                    
-                    Picker("국밥", selection: $manager.filter) {
-                        ForEach(Gukbaps.allCases) { gukbap in
-                            Text(gukbap.shortenName)
-                                .tag(gukbap.shortenName)
-                        }
+        VStack {
+            header
+            list
+        }
+        .overlay(alignment: .bottomTrailing) {
+            NavigationLink {
+                StoreInfoDetailView(manager: StoreInfoManager(), mode: .new)
+            } label: {
+                Image(systemName: "plus")
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background {
+                        Circle()
+                            .fill(.blue)
                     }
-                    .pickerStyle(.menu)
-                }
-                .padding(.horizontal)
-                
-                List {
-                    ForEach(manager.filter == .전체 ? manager.stores : manager.filteredStores ) { store in
-                        NavigationLink {
-                            StoreInfoDetailView(manager: StoreInfoManager(storeInfo: store), mode: .edit) { result in
-                                if case .success(let action) = result, action == .delete {
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }
-                            }
-                        } label: {
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text(store.storeName)
-                                    .font(.headline)
-                                    .foregroundColor(scheme == .light ? .black : .white)
-                                Text(store.storeAddress)
-                                    .font(.caption2)
-                                    .foregroundColor(.secondary)
-                                    .padding(.vertical, 2)
-                            }
-                        }
-                    }
-                }
             }
+            .offset(x: -30, y: -30)
         }
         .onAppear {
             manager.subscribeStoreInfos()
         }
         .onDisappear {
             manager.unsubscribeStoreInfos()
+        }
+       
+        
+    }
+    
+    private var header: some View {
+        HStack(spacing: 4) {
+            Text(manager.filter == .전체 ? "전체" : "총")
+                .font(.title2)
+                .bold()
+            Text("\(manager.filter == .전체 ? manager.stores.count : manager.filteredStores.count)개")
+            
+            Spacer()
+            
+            Picker("국밥", selection: $manager.filter) {
+                ForEach(Gukbaps.allCases) { gukbap in
+                    Text(gukbap.shortenName)
+                        .tag(gukbap.shortenName)
+                }
+            }
+            .pickerStyle(.menu)
+        }
+        .padding(.horizontal)
+    }
+    private var list: some View {
+        List {
+            ForEach(manager.filter == .전체 ? manager.stores : manager.filteredStores ) { store in
+                NavigationLink {
+                    StoreInfoDetailView(manager: StoreInfoManager(storeInfo: store), mode: .edit) { result in
+                        if case .success(let action) = result, action == .delete {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                } label: {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(store.storeName)
+                            .font(.headline)
+                            .foregroundColor(scheme == .light ? .black : .white)
+                        Text(store.storeAddress)
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                            .padding(.vertical, 2)
+                    }
+                }
+            }
         }
     }
 }

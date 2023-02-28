@@ -55,8 +55,13 @@ struct EditImagesView: View {
                 HStack {
                     Spacer()
                     if uploadingState == .none {
-                        Label("사진추가하기", systemImage: "plus.circle")
-                            .font(.subheadline)
+                        if manager.imageSelections.isEmpty {
+                            Label("사진추가하기", systemImage: "plus.circle")
+                                .font(.subheadline)
+                        } else {
+                            Text("완료 전에 사진 업로드를 먼저 진행해주세요")
+                                .font(.subheadline)
+                        }
                     } else if uploadingState == .done {
                         Text("사진 업로드 완료")
                             .font(.subheadline)
