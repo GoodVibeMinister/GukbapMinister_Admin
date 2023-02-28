@@ -53,8 +53,10 @@ struct StoreInfoDetailView: View {
         NavigationStack{
             List {
                 storeNameAndAddress
-
-                storeEvaluation
+                
+                if mode == .edit {
+                    storeEvaluation
+                }
                 
                 storeDescription
                 
@@ -70,6 +72,7 @@ struct StoreInfoDetailView: View {
                 saveButton
             }
         }
+        .navigationBarBackButtonHidden(manager.modified)
     }
     
     var storeNameAndAddress: some View {
@@ -94,6 +97,8 @@ struct StoreInfoDetailView: View {
             }
 
             latlong
+        } header: {
+            Text("가게명, 주소")
         }
     }
     var latlong: some View {
@@ -121,38 +126,42 @@ struct StoreInfoDetailView: View {
         .foregroundColor(.secondary)
     }
     var storeEvaluation: some View {
-        HStack {
-            Spacer()
-            Group {
-                Image("Ggakdugi")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20)
-                    .padding(.leading)
-                Text(String(format: "%.2f", manager.storeInfo.countingStar))
-                    .padding(.trailing)
+        Section {
+            HStack {
+                Spacer()
+                Group {
+                    Image("Ggakdugi")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20)
+                        .padding(.leading)
+                    Text(String(format: "%.2f", manager.storeInfo.countingStar))
+                        .padding(.trailing)
+                }
+                
+                Divider()
+                
+                Group {
+                    Image(systemName: "suit.heart.fill")
+                        .padding(.leading)
+                    Text("\(manager.storeInfo.likes)")
+                        .padding(.trailing)
+                }
+                
+                Divider()
+                
+                Group {
+                    Image(systemName: "eye.fill")
+                        .padding(.leading)
+                    Text("\(manager.storeInfo.hits)")
+                        .padding(.trailing)
+                }
+                Spacer()
             }
-            
-            Divider()
-            
-            Group {
-                Image(systemName: "suit.heart.fill")
-                    .padding(.leading)
-                Text("\(manager.storeInfo.likes)")
-                    .padding(.trailing)
-            }
-            
-            Divider()
-            
-            Group {
-                Image(systemName: "eye.fill")
-                    .padding(.leading)
-                Text("\(manager.storeInfo.hits)")
-                    .padding(.trailing)
-            }
-            Spacer()
+            .font(.caption)
+        } header: {
+            Text("가게평가")
         }
-        .font(.caption)
     }
     var storeDescription: some View {
         Section {
