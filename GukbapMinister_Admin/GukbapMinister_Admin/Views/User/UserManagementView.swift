@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct UserManagementView: View {
+    @StateObject var manager = UsersManager()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(manager.users) { user in
+            VStack(alignment: .leading) {
+                Text(user.userNickname)
+                    .font(.headline)
+                Text(user.userEmail)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+                    .padding(.vertical, 2)
+            }
+        }
+        .onAppear {
+            manager.subscribeUsers()
+        }
+        .onDisappear {
+            manager.unsubscribeUsers()
+        }
     }
 }
 

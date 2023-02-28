@@ -11,6 +11,7 @@
 		5BB0B0DE29AC407B009A91CD /* EditImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0B0DD29AC407B009A91CD /* EditImagesView.swift */; };
 		5BB0B0E129AC6AAD009A91CD /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 5BB0B0E029AC6AAD009A91CD /* Collections */; };
 		5BB0B0E329AC6AAD009A91CD /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 5BB0B0E229AC6AAD009A91CD /* OrderedCollections */; };
+		5BB0B0E729AE23DD009A91CD /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0B0E629AE23DD009A91CD /* UsersManager.swift */; };
 		5BB674B429A9CB480067582B /* MenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB674B329A9CB480067582B /* MenuEditor.swift */; };
 		5BB674B829A9E5780067582B /* EditAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB674B729A9E5780067582B /* EditAddressView.swift */; };
 		5BB674BA29AA02BB0067582B /* DownloadedStoreImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB674B929AA02BB0067582B /* DownloadedStoreImage.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		1D887AFAAB61E86AE84F9459 /* Pods-GukbapMinister_Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GukbapMinister_Admin.debug.xcconfig"; path = "Target Support Files/Pods-GukbapMinister_Admin/Pods-GukbapMinister_Admin.debug.xcconfig"; sourceTree = "<group>"; };
 		5BB0B0DD29AC407B009A91CD /* EditImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImagesView.swift; sourceTree = "<group>"; };
+		5BB0B0E629AE23DD009A91CD /* UsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
 		5BB674B329A9CB480067582B /* MenuEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEditor.swift; sourceTree = "<group>"; };
 		5BB674B729A9E5780067582B /* EditAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressView.swift; sourceTree = "<group>"; };
 		5BB674B929AA02BB0067582B /* DownloadedStoreImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedStoreImage.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB9352D29A7221B00AB409B /* UserManager.swift */,
+				5BB0B0E629AE23DD009A91CD /* UsersManager.swift */,
 				5BB9354C29A7514F00AB409B /* StoreInfo */,
 				5BB9353129A7223600AB409B /* StoreRegistrationManager.swift */,
 				5BB9354329A7268000AB409B /* StoreReport */,
@@ -370,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BB9354029A7239000AB409B /* Store.swift in Sources */,
+				5BB0B0E729AE23DD009A91CD /* UsersManager.swift in Sources */,
 				5BB9353C29A7233500AB409B /* User.swift in Sources */,
 				5BB9353729A7228C00AB409B /* StoreReport.swift in Sources */,
 				5BB674BA29AA02BB0067582B /* DownloadedStoreImage.swift in Sources */,

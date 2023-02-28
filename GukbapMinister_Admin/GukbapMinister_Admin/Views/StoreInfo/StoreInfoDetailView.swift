@@ -27,10 +27,13 @@ struct StoreInfoDetailView: View {
     @StateObject var manager = StoreInfoManager()
     
     //About Update Or Add A Menu
-    @State private var showingMenuEditor: Bool = false
-    @State private var showingMenuAdder: Bool = false
+    @State private var showMenuEditor: Bool = false
+    @State private var showMenuAdder: Bool = false
     @State private var selectedMenu: String = ""
     @State private var menuPrice: String = ""
+    
+    
+    @State private var showDeleteAlert: Bool = false
     
     var mode: Mode = .new
     var completionHandler: ((Result<Action, Error>) -> Void)?
@@ -39,6 +42,12 @@ struct StoreInfoDetailView: View {
     func handleDoneTapped() {
         self.manager.handleDoneTapped()
         self.presentationMode.wrappedValue.dismiss()
+    }
+    
+    var cancelButton: some View {
+        Button(action: { presentationMode.wrappedValue.dismiss()}) {
+            Text("취소")
+        }
     }
     
     var saveButton: some View {
@@ -65,14 +74,48 @@ struct StoreInfoDetailView: View {
                 storeMenus
                 
                 EditImagesView(manager: manager)
+                
+                if mode == .edit {
+                    Section {
+                        Button {
+                            showDeleteAlert = true
+                        } label: {
+                            Text("가게정보 영구삭제")
+                                .foregroundColor(.red)
+                        }
+                        .alert("가게정보 영구삭제", isPresented: $showDeleteAlert) {
+                            Button("취소") {
+                                showDeleteAlert = false
+                            }
+                            Button {
+                                manager.handleDeleteTapped()
+                                showDeleteAlert = false
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Text("영구삭제")
+                                    .foregroundColor(.red)
+                            }
+                        } message: {
+                            Text(
+                             """
+                             정말로 삭제하시겠습니까?
+                             한번 삭제한 가게정보는 되돌릴 수 없습니다.
+                             """
+                            )
+                        }
+                    }
+                }
             }
         }
         .toolbar {
+            ToolbarItem(placement:.navigationBarLeading) {
+                cancelButton
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 saveButton
             }
         }
-        .navigationBarBackButtonHidden(manager.modified)
+        .navigationBarBackButtonHidden(true)
     }
     
     var storeNameAndAddress: some View {
@@ -128,7 +171,6 @@ struct StoreInfoDetailView: View {
     var storeEvaluation: some View {
         Section {
             HStack {
-                Spacer()
                 Group {
                     Image("Ggakdugi")
                         .resizable()
@@ -138,26 +180,29 @@ struct StoreInfoDetailView: View {
                     Text(String(format: "%.2f", manager.storeInfo.countingStar))
                         .padding(.trailing)
                 }
+                .padding(.horizontal, 5)
                 
                 Divider()
-                
+
                 Group {
                     Image(systemName: "suit.heart.fill")
                         .padding(.leading)
                     Text("\(manager.storeInfo.likes)")
                         .padding(.trailing)
                 }
+                .padding(.horizontal, 5)
                 
                 Divider()
-                
+ 
                 Group {
                     Image(systemName: "eye.fill")
                         .padding(.leading)
                     Text("\(manager.storeInfo.hits)")
                         .padding(.trailing)
                 }
-                Spacer()
+                .padding(.horizontal, 5)
             }
+            
             .font(.caption)
         } header: {
             Text("가게평가")
@@ -210,7 +255,7 @@ struct StoreInfoDetailView: View {
                 Button {
                     selectedMenu = menu
                     menuPrice = price
-                    showingMenuEditor = true
+                    showMenuEditor = true
                 } label: {
                     HStack {
                         Image(systemName: "pencil")
@@ -223,22 +268,24 @@ struct StoreInfoDetailView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showingMenuEditor) {
-                MenuEditor(manager: manager, presentSheet: $showingMenuEditor, menu: selectedMenu, price: menuPrice)
+            .disabled(mode == .new)
+            .sheet(isPresented: $showMenuEditor) {
+                MenuEditor(manager: manager, presentSheet: $showMenuEditor, menu: selectedMenu, price: menuPrice)
             }
             
             Button {
-                showingMenuAdder = true
+                showMenuAdder = true
             } label: {
                 HStack {
                     Spacer()
                     Label("메뉴 추가하기", systemImage: "plus.circle")
                         .font(.subheadline)
+                        .foregroundColor(.blue)
                     Spacer()
                 }
             }
-            .sheet(isPresented: $showingMenuAdder) {
-                MenuEditor(manager: manager, presentSheet: $showingMenuAdder, mode: .new)
+            .sheet(isPresented: $showMenuAdder) {
+                MenuEditor(manager: manager, presentSheet: $showMenuAdder, mode: .new)
             }
         } header: {
             Text("가게메뉴")

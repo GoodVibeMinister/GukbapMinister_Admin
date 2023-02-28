@@ -36,14 +36,19 @@ struct EditAddressView: View {
     var body: some View {
         Form {
             Section {
-                Text("기존주소")
-                    .font(.headline)
-                Text(manager.storeInfo.storeAddress)
                 MapUIView(region: MKCoordinateRegion(center: .init(latitude: manager.storeInfo.coordinate.latitude,
                                                                    longitude: manager.storeInfo.coordinate.longitude),
                                                      latitudinalMeters: 500,
                                                      longitudinalMeters: 500))
                 .frame(height: 150)
+            }
+            
+            if !manager.storeInfo.storeAddress.isEmpty {
+                Section {
+                    Text("기존주소")
+                        .font(.headline)
+                    Text(manager.storeInfo.storeAddress)
+                }
             }
             
             Section {
@@ -54,12 +59,14 @@ struct EditAddressView: View {
                         .onChange(of: newAdress) { _ in
                             geocodingStatus = .none
                         }
-                    Button {
-                        newAdress = ""
-                    } label: {
-                        Image(systemName: "x.circle.fill")
+                    
+                    if !newAdress.isEmpty {
+                        Button {
+                            newAdress = ""
+                        } label: {
+                            Image(systemName: "x.circle.fill")
+                        }
                     }
-                    .disabled(newAdress == "")
                 }
                 HStack {
                     Spacer()

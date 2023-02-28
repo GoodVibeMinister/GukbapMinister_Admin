@@ -15,9 +15,27 @@ struct StoreInfoManagementView: View {
 
     
     var body: some View {
-        VStack {
-            header
+        NavigationStack{
             list
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    HStack {
+                        Text("총")
+                            .font(.title2)
+                            .bold()
+                        Text("\(manager.filter == .전체 ? manager.stores.count : manager.filteredStores.count)개")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Picker("국밥", selection: $manager.filter) {
+                        ForEach(Gukbaps.allCases) { gukbap in
+                            Text(gukbap.shortenName)
+                                .tag(gukbap.shortenName)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                }
+            }
         }
         .overlay(alignment: .bottomTrailing) {
             NavigationLink {
@@ -40,29 +58,9 @@ struct StoreInfoManagementView: View {
         .onDisappear {
             manager.unsubscribeStoreInfos()
         }
-       
-        
     }
     
-    private var header: some View {
-        HStack(spacing: 4) {
-            Text(manager.filter == .전체 ? "전체" : "총")
-                .font(.title2)
-                .bold()
-            Text("\(manager.filter == .전체 ? manager.stores.count : manager.filteredStores.count)개")
-            
-            Spacer()
-            
-            Picker("국밥", selection: $manager.filter) {
-                ForEach(Gukbaps.allCases) { gukbap in
-                    Text(gukbap.shortenName)
-                        .tag(gukbap.shortenName)
-                }
-            }
-            .pickerStyle(.menu)
-        }
-        .padding(.horizontal)
-    }
+  
     private var list: some View {
         List {
             ForEach(manager.filter == .전체 ? manager.stores : manager.filteredStores ) { store in
