@@ -58,6 +58,7 @@ struct EditImagesView: View {
                         if manager.imageSelections.isEmpty {
                             Label("사진추가하기", systemImage: "plus.circle")
                                 .font(.subheadline)
+                                .foregroundColor(.blue)
                         } else {
                             Text("완료 전에 사진 업로드를 먼저 진행해주세요")
                                 .font(.subheadline)

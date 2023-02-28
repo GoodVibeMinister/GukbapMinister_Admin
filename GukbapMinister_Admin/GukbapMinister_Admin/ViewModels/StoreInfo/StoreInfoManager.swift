@@ -107,29 +107,6 @@ final class StoreInfoManager: ObservableObject {
         }
     }
     
-    private func addStoreInfo() {
-        do {
-            let _ = try database.collection("Store")
-                .addDocument(from: self.storeInfo)
-        }
-        catch {
-            print(error)
-        }
-    }
-    
-    private func updateStoreInfo() {
-        if let documentId = self.storeInfo.id {
-            do {
-                try database.collection("Store")
-                    .document(documentId)
-                    .setData(from: self.storeInfo)
-            }
-            catch {
-                print(error)
-            }
-        }
-    }
-    
     /// imageStates를 순회하며 Firebase Stroage에 이미지를 업로드하는 함수
     private func uploadImages()  {
          for (_, imageState) in self.imageStates {
@@ -156,6 +133,45 @@ final class StoreInfoManager: ObservableObject {
         }
     }
     
+    /// Store 정보 추가하는 메서드
+    private func addStoreInfo() {
+        do {
+            let _ = try database.collection("Store")
+                .addDocument(from: self.storeInfo)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    /// Store 정보 수정하는 메서드
+    private func updateStoreInfo() {
+        if let documentId = self.storeInfo.id {
+            do {
+                try database.collection("Store")
+                    .document(documentId)
+                    .setData(from: self.storeInfo)
+            }
+            catch {
+                print(error)
+            }
+        }
+    }
+    
+    private func removeStoreInfo() {
+        if let documentId = self.storeInfo.id {
+            database.collection("Store").document(documentId).delete { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                
+                self.storage.reference().child("storeImages/\(self.storeInfo.storeName)")
+                    .delete()
+            }
+        }
+    }
+    
+    
     
     //MARK: - PhotosPicker 데이터 처리
     private func loadTransferable(from imageSelection: PhotosPickerItem) -> Progress {
@@ -176,15 +192,6 @@ final class StoreInfoManager: ObservableObject {
     
     
     //MARK: - UI Handler
-    func removeStoreInfo() {
-        if let documentId = self.storeInfo.id {
-            database.collection("Store").document(documentId).delete { error in
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
     
     func handleDoneTapped() {
         if let _ = self.storeInfo.id {
@@ -196,5 +203,9 @@ final class StoreInfoManager: ObservableObject {
     
     func handleUploadTapped() {
         uploadImages()
+    }
+    
+    func handleDeleteTapped() {
+        removeStoreInfo()
     }
 }

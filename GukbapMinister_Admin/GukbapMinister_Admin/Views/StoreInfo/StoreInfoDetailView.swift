@@ -27,10 +27,13 @@ struct StoreInfoDetailView: View {
     @StateObject var manager = StoreInfoManager()
     
     //About Update Or Add A Menu
-    @State private var showingMenuEditor: Bool = false
-    @State private var showingMenuAdder: Bool = false
+    @State private var showMenuEditor: Bool = false
+    @State private var showMenuAdder: Bool = false
     @State private var selectedMenu: String = ""
     @State private var menuPrice: String = ""
+    
+    
+    @State private var showDeleteAlert: Bool = false
     
     var mode: Mode = .new
     var completionHandler: ((Result<Action, Error>) -> Void)?
@@ -65,6 +68,33 @@ struct StoreInfoDetailView: View {
                 storeMenus
                 
                 EditImagesView(manager: manager)
+                
+                if mode == .edit {
+                    Section {
+                        Button {
+                            showDeleteAlert = true
+                        } label: {
+                            Text("가게정보 영구삭제")
+                        }
+                        .alert("가게정보 영구삭제", isPresented: $showDeleteAlert) {
+                            Button("취소") {
+                                showDeleteAlert = false
+                            }
+                            Button("영구삭제") {
+                                manager.handleDeleteTapped()
+                                showDeleteAlert = false
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        } message: {
+                            Text(
+                             """
+                             정말로 삭제하시겠습니까?
+                             한번 삭제한 가게정보는 되돌릴 수 없습니다.
+                             """
+                            )
+                        }
+                    }
+                }
             }
         }
         .toolbar {
@@ -210,7 +240,7 @@ struct StoreInfoDetailView: View {
                 Button {
                     selectedMenu = menu
                     menuPrice = price
-                    showingMenuEditor = true
+                    showMenuEditor = true
                 } label: {
                     HStack {
                         Image(systemName: "pencil")
@@ -223,22 +253,24 @@ struct StoreInfoDetailView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showingMenuEditor) {
-                MenuEditor(manager: manager, presentSheet: $showingMenuEditor, menu: selectedMenu, price: menuPrice)
+            .disabled(mode == .new)
+            .sheet(isPresented: $showMenuEditor) {
+                MenuEditor(manager: manager, presentSheet: $showMenuEditor, menu: selectedMenu, price: menuPrice)
             }
             
             Button {
-                showingMenuAdder = true
+                showMenuAdder = true
             } label: {
                 HStack {
                     Spacer()
                     Label("메뉴 추가하기", systemImage: "plus.circle")
                         .font(.subheadline)
+                        .foregroundColor(.blue)
                     Spacer()
                 }
             }
-            .sheet(isPresented: $showingMenuAdder) {
-                MenuEditor(manager: manager, presentSheet: $showingMenuAdder, mode: .new)
+            .sheet(isPresented: $showMenuAdder) {
+                MenuEditor(manager: manager, presentSheet: $showMenuAdder, mode: .new)
             }
         } header: {
             Text("가게메뉴")
