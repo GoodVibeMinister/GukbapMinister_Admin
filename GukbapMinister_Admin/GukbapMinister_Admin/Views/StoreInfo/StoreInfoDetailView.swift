@@ -44,6 +44,12 @@ struct StoreInfoDetailView: View {
         self.presentationMode.wrappedValue.dismiss()
     }
     
+    var cancelButton: some View {
+        Button(action: { presentationMode.wrappedValue.dismiss()}) {
+            Text("취소")
+        }
+    }
+    
     var saveButton: some View {
         Button(action: { self.handleDoneTapped() }) {
             Text(mode == .new ? "추가하기" : "수정완료")
@@ -75,15 +81,19 @@ struct StoreInfoDetailView: View {
                             showDeleteAlert = true
                         } label: {
                             Text("가게정보 영구삭제")
+                                .foregroundColor(.red)
                         }
                         .alert("가게정보 영구삭제", isPresented: $showDeleteAlert) {
                             Button("취소") {
                                 showDeleteAlert = false
                             }
-                            Button("영구삭제") {
+                            Button {
                                 manager.handleDeleteTapped()
                                 showDeleteAlert = false
                                 presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Text("영구삭제")
+                                    .foregroundColor(.red)
                             }
                         } message: {
                             Text(
@@ -98,11 +108,14 @@ struct StoreInfoDetailView: View {
             }
         }
         .toolbar {
+            ToolbarItem(placement:.navigationBarLeading) {
+                cancelButton
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 saveButton
             }
         }
-        .navigationBarBackButtonHidden(manager.modified)
+        .navigationBarBackButtonHidden(true)
     }
     
     var storeNameAndAddress: some View {
@@ -158,7 +171,6 @@ struct StoreInfoDetailView: View {
     var storeEvaluation: some View {
         Section {
             HStack {
-                Spacer()
                 Group {
                     Image("Ggakdugi")
                         .resizable()
@@ -168,26 +180,29 @@ struct StoreInfoDetailView: View {
                     Text(String(format: "%.2f", manager.storeInfo.countingStar))
                         .padding(.trailing)
                 }
+                .padding(.horizontal, 5)
                 
                 Divider()
-                
+
                 Group {
                     Image(systemName: "suit.heart.fill")
                         .padding(.leading)
                     Text("\(manager.storeInfo.likes)")
                         .padding(.trailing)
                 }
+                .padding(.horizontal, 5)
                 
                 Divider()
-                
+ 
                 Group {
                     Image(systemName: "eye.fill")
                         .padding(.leading)
                     Text("\(manager.storeInfo.hits)")
                         .padding(.trailing)
                 }
-                Spacer()
+                .padding(.horizontal, 5)
             }
+            
             .font(.caption)
         } header: {
             Text("가게평가")

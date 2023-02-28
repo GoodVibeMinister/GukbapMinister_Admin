@@ -19,7 +19,8 @@ struct EditImagesView: View {
     @State private var uploadingState: ImageUploadingState = .none
     
     var body: some View {
-        VStack {
+        
+        Section {
             ScrollView(.horizontal) {
                 LazyHStack {
                     ForEach(manager.storeImageUrls, id: \.self) { imageURL in
@@ -71,6 +72,8 @@ struct EditImagesView: View {
                 }
             }
             .disabled(uploadingState == .done)
+        } header : {
+            Text("가게 사진")
         }
         .sheet(isPresented: $showUploadImageSheet) {
             UploadImageSheet(manager: manager, showSheet: $showUploadImageSheet, uploadingState: $uploadingState)

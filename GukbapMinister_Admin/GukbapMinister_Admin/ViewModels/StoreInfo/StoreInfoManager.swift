@@ -166,7 +166,15 @@ final class StoreInfoManager: ObservableObject {
                 }
                 
                 self.storage.reference().child("storeImages/\(self.storeInfo.storeName)")
-                    .delete()
+                    .listAll{ result, error in
+                        if let error {
+                            print(error.localizedDescription)
+                        } else {
+                            for item in result.items {
+                                item.delete()
+                            }
+                        }
+                    }
             }
         }
     }

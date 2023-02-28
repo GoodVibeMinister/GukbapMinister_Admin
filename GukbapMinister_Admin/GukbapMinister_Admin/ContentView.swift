@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         
-        NavigationStack{
+        
             TabView(selection: $tabSelection) {
                 UserManagementView()
                     .tabItem {
@@ -42,7 +42,7 @@ struct ContentView: View {
                     }
                     .tag(4)
             }
-        }
+        
         
         
         
