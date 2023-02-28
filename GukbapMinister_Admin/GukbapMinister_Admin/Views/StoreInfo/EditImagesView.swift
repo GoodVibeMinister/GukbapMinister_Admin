@@ -9,9 +9,14 @@ import SwiftUI
 import PhotosUI
 import Collections
 
+enum ImageUploadingState {
+    case none, loading, done
+}
+
 struct EditImagesView: View {
     @ObservedObject var manager: StoreInfoManager
     @State private var showUploadImageSheet: Bool = false
+    @State private var uploadingState: ImageUploadingState = .none
     
     var body: some View {
         VStack {
@@ -28,6 +33,15 @@ struct EditImagesView: View {
                             .scaledToFill()
                             .frame(width: 100, height: 100)
                             .clipShape(Rectangle())
+                            .overlay(alignment: .bottomTrailing) {
+                                Text("추가")
+                                    .font(.caption)
+                                    .foregroundColor(.white)
+                                    .padding(5)
+                                    .background {
+                                        Capsule()
+                                    }
+                            }
                             .padding(5)
                     }
                 }
@@ -40,14 +54,20 @@ struct EditImagesView: View {
             } label: {
                 HStack {
                     Spacer()
-                    Label("사진추가하기", systemImage: "plus.circle")
-                        .font(.subheadline)
+                    if uploadingState == .none {
+                        Label("사진추가하기", systemImage: "plus.circle")
+                            .font(.subheadline)
+                    } else if uploadingState == .done {
+                        Text("사진 업로드 완료")
+                            .font(.subheadline)
+                    }
                     Spacer()
                 }
             }
+            .disabled(uploadingState == .done)
         }
         .sheet(isPresented: $showUploadImageSheet) {
-            UploadImageSheet(manager: manager)
+            UploadImageSheet(manager: manager, showSheet: $showUploadImageSheet, uploadingState: $uploadingState)
         }
     }
 }
@@ -55,69 +75,101 @@ struct EditImagesView: View {
 
 struct UploadImageSheet: View {
     @ObservedObject var manager: StoreInfoManager
-    let columns = Array(repeating: GridItem(.flexible()), count: 3)
+    @Binding var showSheet: Bool
+    @Binding var uploadingState: ImageUploadingState
     
-
+    let columns = Array(repeating: GridItem(.flexible()), count: 3)
     var body: some View {
         VStack {
             ScrollView(.vertical) {
                 LazyVGrid(columns: columns) {
-                    PhotosPicker(selection: $manager.imageSelections, photoLibrary: .shared()) {
-                        VStack {
-                            Image(systemName: "plus.circle")
-                                .font(.title)
-                                .padding()
-                            Text("사진추가하기")
-                        }
-                        .frame(width: 100, height: 100)
-                        .background {
-                            Rectangle()
-                                .stroke(.blue)
-                        }
-                    }
-                    
-                    
-                    ForEach(manager.imageSelections, id: \.self) { selection in
-                        StoreImage(imageState: manager.imageStates[selection] ?? .empty)
-                            .scaledToFill()
-                            .frame(width: 100, height: 100)
-                            .clipShape(Rectangle())
-                            .overlay(alignment: .bottomTrailing) {
-                                Button {
-                                    if let index = manager.imageSelections.firstIndex(of: selection)  {
-                                        manager.imageSelections.remove(at: index)
-                                    }
-                                } label: {
-                                    Image(systemName: "trash.fill")
-                                        .foregroundColor(.white)
-                                        .padding(3)
-                                        .background {
-                                            Circle()
-                                                .fill(.black)
-                                        }
-                                        
-                                }
-                            }
-                            .background {
-                                    Rectangle()
-                                        .fill(.blue)
-                            }
-                    }
+                    photosPicker
+                    selectedImages
                 }
                 .padding(.vertical)
             }
-            
-            Button {
-                
-            } label: {
-                Text("업로드")
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
+            uploadButton
         }
         .padding()
     }
+    
+    var photosPicker: some View {
+        PhotosPicker(selection: $manager.imageSelections, photoLibrary: .shared()) {
+            VStack {
+                Image(systemName: "plus.circle")
+                    .font(.title)
+                    .padding()
+                Text("사진추가하기")
+            }
+            .frame(width: 100, height: 100)
+            .background {
+                Rectangle()
+                    .stroke(.blue)
+            }
+        }
+    }
+    var selectedImages: some View {
+        ForEach(manager.imageSelections, id: \.self) { selection in
+            StoreImage(imageState: manager.imageStates[selection] ?? .empty)
+                .scaledToFill()
+                .frame(width: 100, height: 100)
+                .clipShape(Rectangle())
+                .overlay(alignment: .bottomTrailing) {
+                    Button {
+                        if let index = manager.imageSelections.firstIndex(of: selection)  {
+                            manager.imageSelections.remove(at: index)
+                        }
+                    } label: {
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(.white)
+                            .padding(3)
+                            .background {
+                                Circle()
+                                    .fill(.black)
+                            }
+                        
+                    }
+                }
+                .background {
+                    Rectangle()
+                        .fill(.blue)
+                }
+        }
+    }
+    var uploadButton: some View {
+        Button {
+            upload()
+        } label: {
+            Text(manager.imageSelections.isEmpty ? "사진을 추가해주세요" : "\(manager.imageSelections.count)장의 사진업로드")
+                .overlay(alignment: .trailing){
+                    if uploadingState == .loading {
+                        ProgressView()
+                            .offset(x: 20)
+                    } else if uploadingState == .done {
+                        Image(systemName: "checkmark")
+                            .offset(x: 20)
+                    }
+                }
+                .padding(.vertical, 10)
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.borderedProminent)
+        .disabled(manager.imageSelections.isEmpty)
+    }
+    func upload() {
+        Task {
+            uploadingState = .loading
+            manager.handleUploadTapped()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                uploadingState = .done
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                showSheet = false
+            }
+            
+        }
+    }
+    
 }
 
 
@@ -139,12 +191,6 @@ struct StoreImage: View {
                 .font(.system(size: 40))
                 .foregroundColor(.white)
         }
-    }
-}
-
-struct EditImagesView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditImagesView(manager: StoreInfoManager())
     }
 }
 

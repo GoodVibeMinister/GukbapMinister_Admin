@@ -69,8 +69,9 @@ final class StoreInfoManager: ObservableObject {
         }
     }
     
+    
     //MARK: - Initializer
-
+    
     init(storeInfo: Store = Store(storeName: "", storeAddress: "", coordinate: GeoPoint(latitude: 0, longitude: 0), storeImages: [], menu: [:], description: "", countingStar: 0.0, foodType: [], likes: 0, hits: 0)) {
         self.storeInfo = storeInfo
         
@@ -93,23 +94,21 @@ final class StoreInfoManager: ObservableObject {
     
     //MARK: - Private Methods
     /// SDWebImage가 다운로드 받을 수 있는 형식의 URL생성
-     private func loadImageUrl(_ storeInfo: Store) {
-         
-        //FIXME: 이렇게 스토리지 레퍼런스에서 url을 통해 이미지를 로드한다면 나중에는 Store Model의 storeImages 필드가 굳이 필요 없지 않을까 생각해봅니다.
-         
+    private func loadImageUrl(_ storeInfo: Store) {
+        //TODO: 이렇게 스토리지 레퍼런스에서 url을 통해 이미지를 로드한다면 나중에는 Store Model의 storeImages 필드가 굳이 필요 없지 않을까 생각해봅니다.
         if let _ = storeInfo.id {
-            for imageName in storeInfo.storeImages {
-                let ref = storage.reference().child("storeImages/\(storeInfo.storeName)/\(imageName)")
-                
-                let storageURL = NSURL.sd_URL(with: ref) as URL?
-                self.storeImageUrls.append(storageURL!)
+            //"storeImages/\(storeInfo.storeName)"하위의 파일들 레퍼런스들을 나열
+            storage.reference().child("storeImages/\(storeInfo.storeName)").listAll { result, error in
+                for ref in result.items {
+                    let storageURL = NSURL.sd_URL(with: ref) as URL?
+                    self.storeImageUrls.append(storageURL!)
+                }
             }
         }
     }
     
     private func addStoreInfo() {
         do {
-            self.storeInfo.storeImages += uploadImages(storeInfo)
             let _ = try database.collection("Store")
                 .addDocument(from: self.storeInfo)
         }
@@ -118,13 +117,12 @@ final class StoreInfoManager: ObservableObject {
         }
     }
     
-    private func updateStoreInfo(_ storeInfo: Store) {
-        if let documentId = storeInfo.id {
+    private func updateStoreInfo() {
+        if let documentId = self.storeInfo.id {
             do {
-                self.storeInfo.storeImages += uploadImages(storeInfo)
                 try database.collection("Store")
                     .document(documentId)
-                    .setData(from: storeInfo)
+                    .setData(from: self.storeInfo)
             }
             catch {
                 print(error)
@@ -133,21 +131,12 @@ final class StoreInfoManager: ObservableObject {
     }
     
     /// imageStates를 순회하며 Firebase Stroage에 이미지를 업로드하는 함수
-    private func uploadImages(_ storeInfo: Store) -> [String] {
-        var imageNames: [String] = []
-        
-        guard !imageStates.isEmpty else {
-            return []
-        }
-        
-        
-        
-        for (_, imageState) in self.imageStates {
-            let imageName = UUID().uuidString
-            let storageRef = storage.reference().child("storeImages/\(storeInfo.storeName)/\(imageName)")
-            
+    private func uploadImages()  {
+         for (_, imageState) in self.imageStates {
+             let imageName = UUID().uuidString
+            let storageRef = storage.reference().child("storeImages/\(self.storeInfo.storeName)/\(imageName)")
+
             switch imageState {
-                
             case .success(let uiImage):
                 let data = uiImage.jpegData(compressionQuality: 0.1)
                 let metadata = StorageMetadata()
@@ -157,15 +146,14 @@ final class StoreInfoManager: ObservableObject {
                         guard let _ = metadata else {
                             return
                         }
-                        imageNames.append(imageName)
+                        self.storeInfo.storeImages.append(imageName)
                     }
                 }
                 
             default: print("cannot upload this image")
             }
+            
         }
-        
-        return imageNames
     }
     
     
@@ -185,7 +173,7 @@ final class StoreInfoManager: ObservableObject {
         }
     }
     
-
+    
     
     //MARK: - UI Handler
     func removeStoreInfo() {
@@ -200,9 +188,13 @@ final class StoreInfoManager: ObservableObject {
     
     func handleDoneTapped() {
         if let _ = self.storeInfo.id {
-            updateStoreInfo(self.storeInfo)
+            updateStoreInfo()
         } else {
             addStoreInfo()
         }
+    }
+    
+    func handleUploadTapped() {
+        uploadImages()
     }
 }
