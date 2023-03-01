@@ -72,6 +72,7 @@ struct EditImagesView: View {
                 }
             }
             .disabled(uploadingState == .done)
+            .disabled(manager.storeInfo.storeName.isEmpty)
         } header : {
             Text("가게 사진")
         }
