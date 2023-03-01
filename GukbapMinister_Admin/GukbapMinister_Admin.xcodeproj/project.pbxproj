@@ -12,6 +12,7 @@
 		5BB0B0E129AC6AAD009A91CD /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 5BB0B0E029AC6AAD009A91CD /* Collections */; };
 		5BB0B0E329AC6AAD009A91CD /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 5BB0B0E229AC6AAD009A91CD /* OrderedCollections */; };
 		5BB0B0E729AE23DD009A91CD /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0B0E629AE23DD009A91CD /* UsersManager.swift */; };
+		5BB0B0E929AE4EF6009A91CD /* UserGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0B0E829AE4EF6009A91CD /* UserGrades.swift */; };
 		5BB674B429A9CB480067582B /* MenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB674B329A9CB480067582B /* MenuEditor.swift */; };
 		5BB674B829A9E5780067582B /* EditAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB674B729A9E5780067582B /* EditAddressView.swift */; };
 		5BB674BA29AA02BB0067582B /* DownloadedStoreImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB674B929AA02BB0067582B /* DownloadedStoreImage.swift */; };
@@ -45,6 +46,7 @@
 		1D887AFAAB61E86AE84F9459 /* Pods-GukbapMinister_Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GukbapMinister_Admin.debug.xcconfig"; path = "Target Support Files/Pods-GukbapMinister_Admin/Pods-GukbapMinister_Admin.debug.xcconfig"; sourceTree = "<group>"; };
 		5BB0B0DD29AC407B009A91CD /* EditImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImagesView.swift; sourceTree = "<group>"; };
 		5BB0B0E629AE23DD009A91CD /* UsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
+		5BB0B0E829AE4EF6009A91CD /* UserGrades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGrades.swift; sourceTree = "<group>"; };
 		5BB674B329A9CB480067582B /* MenuEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEditor.swift; sourceTree = "<group>"; };
 		5BB674B729A9E5780067582B /* EditAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressView.swift; sourceTree = "<group>"; };
 		5BB674B929AA02BB0067582B /* DownloadedStoreImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedStoreImage.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB9354D29A8A53200AB409B /* Gukbaps.swift */,
+				5BB0B0E829AE4EF6009A91CD /* UserGrades.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				5BB9353229A7223700AB409B /* StoreRegistrationManager.swift in Sources */,
 				5BB9353929A722D500AB409B /* StoreRegistration.swift in Sources */,
 				5BB9352329A720FF00AB409B /* StoreInfoManagementView.swift in Sources */,
+				5BB0B0E929AE4EF6009A91CD /* UserGrades.swift in Sources */,
 				5BB9353E29A7235B00AB409B /* Review.swift in Sources */,
 				5BB9354529A72D8800AB409B /* StoreReportDetailView.swift in Sources */,
 				5BB674B429A9CB480067582B /* MenuEditor.swift in Sources */,

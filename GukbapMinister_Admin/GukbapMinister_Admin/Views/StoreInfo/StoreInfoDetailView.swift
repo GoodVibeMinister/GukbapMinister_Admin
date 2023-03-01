@@ -76,34 +76,7 @@ struct StoreInfoDetailView: View {
                 EditImagesView(manager: manager)
                 
                 if mode == .edit {
-                    Section {
-                        Button {
-                            showDeleteAlert = true
-                        } label: {
-                            Text("가게정보 영구삭제")
-                                .foregroundColor(.red)
-                        }
-                        .alert("가게정보 영구삭제", isPresented: $showDeleteAlert) {
-                            Button("취소") {
-                                showDeleteAlert = false
-                            }
-                            Button {
-                                manager.handleDeleteTapped()
-                                showDeleteAlert = false
-                                presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Text("영구삭제")
-                                    .foregroundColor(.red)
-                            }
-                        } message: {
-                            Text(
-                             """
-                             정말로 삭제하시겠습니까?
-                             한번 삭제한 가게정보는 되돌릴 수 없습니다.
-                             """
-                            )
-                        }
-                    }
+                    deleteStoreButton
                 }
             }
         }
@@ -289,6 +262,36 @@ struct StoreInfoDetailView: View {
             }
         } header: {
             Text("가게메뉴")
+        }
+    }
+    var deleteStoreButton: some View {
+        Section {
+            Button {
+                showDeleteAlert = true
+            } label: {
+                Text("가게정보 영구삭제")
+                    .foregroundColor(.red)
+            }
+            .alert("가게정보 영구삭제", isPresented: $showDeleteAlert) {
+                Button("취소") {
+                    showDeleteAlert = false
+                }
+                Button {
+                    manager.handleDeleteTapped()
+                    showDeleteAlert = false
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Text("영구삭제")
+                        .foregroundColor(.red)
+                }
+            } message: {
+                Text(
+                 """
+                 정말로 삭제하시겠습니까?
+                 한번 삭제한 가게정보는 되돌릴 수 없습니다.
+                 """
+                )
+            }
         }
     }
 }
