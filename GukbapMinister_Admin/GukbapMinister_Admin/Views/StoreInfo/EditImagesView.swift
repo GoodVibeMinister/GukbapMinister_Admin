@@ -7,7 +7,7 @@
 
 import SwiftUI
 import PhotosUI
-import Collections
+
 
 enum ImageUploadingState {
     case none, loading, done
@@ -23,10 +23,8 @@ struct EditImagesView: View {
         Section {
             ScrollView(.horizontal) {
                 LazyHStack {
-                    ForEach(manager.storeImageUrls, id: \.self) { imageURL in
-                        //이렇게 사용하는 이유는 권고사항이기 때문
-                        //https://github.com/SDWebImage/SDWebImageSwiftUI#common-problems
-                        DownloadedStoreImage(imageURL: imageURL)
+                    ForEach(manager.storeInfo.storeImages, id: \.self) { imageURL in
+                        DownloadedStoreImage(imageURL: URL(string:imageURL))
                     }
                     
                     ForEach(manager.imageSelections, id: \.self) { selection in

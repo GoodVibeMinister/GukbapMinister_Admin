@@ -14,7 +14,6 @@ struct StoreRegistration: Codable, Hashable, Identifiable {
     var storeName: String
     var storeAddress: String
     var coordinate: GeoPoint
-    var storeImages: [String]
     var menu: [String : String]
     var description: String
     var countingStar: Double

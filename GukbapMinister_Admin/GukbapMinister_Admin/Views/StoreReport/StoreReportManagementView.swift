@@ -38,6 +38,8 @@ struct StoreReportManagementView: View {
                     }
                 }
             }// List Ended
+            .navigationBarTitle(Text("국밥집 제보관리"))
+            .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
             reportsManager.subscribeStoreReports()

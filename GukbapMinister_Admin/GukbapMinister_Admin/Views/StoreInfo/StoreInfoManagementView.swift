@@ -36,21 +36,21 @@ struct StoreInfoManagementView: View {
                     .pickerStyle(.menu)
                 }
             }
-        }
-        .overlay(alignment: .bottomTrailing) {
-            NavigationLink {
-                StoreInfoDetailView(manager: StoreInfoManager(), mode: .new)
-            } label: {
-                Image(systemName: "plus")
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background {
-                        Circle()
-                            .fill(.blue)
-                    }
+            .overlay(alignment: .bottomTrailing) {
+                NavigationLink {
+                    StoreInfoDetailView(manager: StoreInfoManager(), mode: .new)
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title)
+                        .foregroundColor(scheme == .light ? .white : .black)
+                        .padding()
+                        .background {
+                            Circle()
+                                .fill(Color.accentColor)
+                        }
+                }
+                .offset(x: -30, y: -30)
             }
-            .offset(x: -30, y: -30)
         }
         .onAppear {
             manager.subscribeStoreInfos()
