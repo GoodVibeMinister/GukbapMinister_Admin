@@ -93,7 +93,7 @@ struct StoreInfoDetailView: View {
                     .font(.headline)
                 Divider()
                 TextField("상호명", text: $manager.storeInfo.storeName)
-                    .disabled(true)
+                    .disabled(mode == .edit)
             }
             
             NavigationLink {
