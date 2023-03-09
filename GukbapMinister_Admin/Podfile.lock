@@ -323,6 +323,7 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.2)
+  - Kingfisher (7.6.2)
   - leveldb-library (1.22.1)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
@@ -343,6 +344,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - FirebaseStorage
   - FirebaseUI/Storage (~> 8.0)
+  - Kingfisher (~> 7.0)
   - SDWebImageSwiftUI
 
 SPEC REPOS:
@@ -365,6 +367,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - Kingfisher
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -390,12 +393,13 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: 1c39de67663e5eebb2f41324d5d580eeea12dd4c
   SDWebImageSwiftUI: 54ded4115b4ac6cd60b78f61415f86d070892d98
 
-PODFILE CHECKSUM: 8c60599305e886b363978d519c584490f9ff07d3
+PODFILE CHECKSUM: ed6f9f90040dbd5405b671af86149e4450958de0
 
 COCOAPODS: 1.11.3

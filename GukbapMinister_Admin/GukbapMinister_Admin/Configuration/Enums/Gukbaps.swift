@@ -23,6 +23,8 @@ enum Gukbaps: String, CaseIterable, Identifiable {
     case 평양온반
     case 시레기국밥
     case 육개장
+    case 곰탕
+    case 추어탕
     
     var id: Self { self }
     
@@ -41,7 +43,7 @@ enum Gukbaps: String, CaseIterable, Identifiable {
         case .설렁탕: return "설렁"
         case .평양온반: return "온반"
         case .시레기국밥: return "시레기"
-        case .육개장: return "육개장"
+        case .육개장, .곰탕, .추어탕: return self.rawValue
         }
     }
 }

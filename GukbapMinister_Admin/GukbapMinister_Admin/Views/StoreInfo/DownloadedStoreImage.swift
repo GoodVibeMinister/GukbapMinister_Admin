@@ -6,17 +6,29 @@
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
+import Kingfisher
 
 struct DownloadedStoreImage: View {
-    var imageURL: URL
+    var imageURL: URL?
     var body: some View {
         VStack{
-            WebImage(url: imageURL)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 100)
-                .clipShape(Rectangle())
+            if let imageURL {
+                KFImage.url(imageURL)
+                    .resizable()
+                    .placeholder {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.1))
+                            .frame(width: 100, height: 100)
+                    }
+                    .setProcessor(DownsamplingImageProcessor(size: CGSize(width: 200, height: 200)))
+                    .loadDiskFileSynchronously()
+                    .cacheMemoryOnly()
+                    .fade(duration: 1)
+                    .cancelOnDisappear(true)
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    .clipShape(Rectangle())
+            }
         }
         .padding(5)
         

@@ -8,16 +8,9 @@
 import SwiftUI
 
 
-enum Mode {
-    case new
-    case edit
-}
 
-enum Action {
-    case delete
-    case done
-    case cancel
-}
+
+
 
 
 struct StoreInfoDetailView: View {
@@ -40,8 +33,10 @@ struct StoreInfoDetailView: View {
     
 
     func handleDoneTapped() {
-        self.manager.handleDoneTapped()
-        self.presentationMode.wrappedValue.dismiss()
+        Task {
+            await self.manager.handleDoneTapped()
+            self.presentationMode.wrappedValue.dismiss()
+        }
     }
     
     var cancelButton: some View {
@@ -98,6 +93,7 @@ struct StoreInfoDetailView: View {
                     .font(.headline)
                 Divider()
                 TextField("상호명", text: $manager.storeInfo.storeName)
+                    .disabled(true)
             }
             
             NavigationLink {

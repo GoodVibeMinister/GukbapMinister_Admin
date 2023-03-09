@@ -8,9 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		3B9974094CAC7B2BF925613C /* Pods_GukbapMinister_Admin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59581F2C4A9FF90DBE47343 /* Pods_GukbapMinister_Admin.framework */; };
+		5B2C173D29B5C33B003091A9 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C173C29B5C33B003091A9 /* Notice.swift */; };
+		5B2C173F29B5C44C003091A9 /* NoticeManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C173E29B5C44C003091A9 /* NoticeManagementView.swift */; };
+		5B8074F329B701B700DCE59C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8074F229B701B700DCE59C /* AuthManager.swift */; };
+		5B8074F529B706D600DCE59C /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8074F429B706D600DCE59C /* AuthView.swift */; };
+		5B8074F729B7076100DCE59C /* WindowKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8074F629B7076100DCE59C /* WindowKey.swift */; };
+		5B8074FA29B70C1900DCE59C /* NoticesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8074F929B70C1900DCE59C /* NoticesManager.swift */; };
+		5B8074FC29B70C3500DCE59C /* NoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8074FB29B70C3500DCE59C /* NoticeManager.swift */; };
+		5B80750329B7143D00DCE59C /* NoticeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80750229B7143D00DCE59C /* NoticeDetailView.swift */; };
+		5B80750529B71AB600DCE59C /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80750429B71AB600DCE59C /* Mode.swift */; };
+		5B80750729B71AC800DCE59C /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B80750629B71AC800DCE59C /* Action.swift */; };
 		5BB0B0DE29AC407B009A91CD /* EditImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0B0DD29AC407B009A91CD /* EditImagesView.swift */; };
-		5BB0B0E129AC6AAD009A91CD /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 5BB0B0E029AC6AAD009A91CD /* Collections */; };
-		5BB0B0E329AC6AAD009A91CD /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = 5BB0B0E229AC6AAD009A91CD /* OrderedCollections */; };
 		5BB0B0E729AE23DD009A91CD /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0B0E629AE23DD009A91CD /* UsersManager.swift */; };
 		5BB0B0E929AE4EF6009A91CD /* UserGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0B0E829AE4EF6009A91CD /* UserGrades.swift */; };
 		5BB674B429A9CB480067582B /* MenuEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB674B329A9CB480067582B /* MenuEditor.swift */; };
@@ -44,6 +52,17 @@
 
 /* Begin PBXFileReference section */
 		1D887AFAAB61E86AE84F9459 /* Pods-GukbapMinister_Admin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GukbapMinister_Admin.debug.xcconfig"; path = "Target Support Files/Pods-GukbapMinister_Admin/Pods-GukbapMinister_Admin.debug.xcconfig"; sourceTree = "<group>"; };
+		5B2C173C29B5C33B003091A9 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		5B2C173E29B5C44C003091A9 /* NoticeManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeManagementView.swift; sourceTree = "<group>"; };
+		5B8074F129B7017100DCE59C /* GukbapMinister_Admin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GukbapMinister_Admin.entitlements; sourceTree = "<group>"; };
+		5B8074F229B701B700DCE59C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		5B8074F429B706D600DCE59C /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		5B8074F629B7076100DCE59C /* WindowKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowKey.swift; sourceTree = "<group>"; };
+		5B8074F929B70C1900DCE59C /* NoticesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesManager.swift; sourceTree = "<group>"; };
+		5B8074FB29B70C3500DCE59C /* NoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeManager.swift; sourceTree = "<group>"; };
+		5B80750229B7143D00DCE59C /* NoticeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeDetailView.swift; sourceTree = "<group>"; };
+		5B80750429B71AB600DCE59C /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
+		5B80750629B71AC800DCE59C /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		5BB0B0DD29AC407B009A91CD /* EditImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImagesView.swift; sourceTree = "<group>"; };
 		5BB0B0E629AE23DD009A91CD /* UsersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
 		5BB0B0E829AE4EF6009A91CD /* UserGrades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGrades.swift; sourceTree = "<group>"; };
@@ -84,9 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BB0B0E129AC6AAD009A91CD /* Collections in Frameworks */,
 				3B9974094CAC7B2BF925613C /* Pods_GukbapMinister_Admin.framework in Frameworks */,
-				5BB0B0E329AC6AAD009A91CD /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +116,58 @@
 				A59581F2C4A9FF90DBE47343 /* Pods_GukbapMinister_Admin.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B8074F829B7076E00DCE59C /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9354F29A8A54800AB409B /* Enums */,
+				5B8074F629B7076100DCE59C /* WindowKey.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		5B8074FD29B70C3900DCE59C /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				5B8074F929B70C1900DCE59C /* NoticesManager.swift */,
+				5B8074FB29B70C3500DCE59C /* NoticeManager.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
+		5B8074FE29B70C4400DCE59C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5B8074F229B701B700DCE59C /* AuthManager.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5B8074FF29B70C4F00DCE59C /* StoreRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9353129A7223600AB409B /* StoreRegistrationManager.swift */,
+			);
+			path = StoreRegistration;
+			sourceTree = "<group>";
+		};
+		5B80750029B70C5C00DCE59C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5BB9352D29A7221B00AB409B /* UserManager.swift */,
+				5BB0B0E629AE23DD009A91CD /* UsersManager.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		5B80750129B70C6500DCE59C /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C173E29B5C44C003091A9 /* NoticeManagementView.swift */,
+				5B80750229B7143D00DCE59C /* NoticeDetailView.swift */,
+			);
+			path = Notice;
 			sourceTree = "<group>";
 		};
 		5BB934FB29A7045800AB409B = {
@@ -123,9 +192,10 @@
 		5BB9350629A7045800AB409B /* GukbapMinister_Admin */ = {
 			isa = PBXGroup;
 			children = (
+				5B8074F129B7017100DCE59C /* GukbapMinister_Admin.entitlements */,
 				5BB9350729A7045800AB409B /* GukbapMinister_AdminApp.swift */,
 				5BB9350929A7045800AB409B /* ContentView.swift */,
-				5BB9354F29A8A54800AB409B /* Enums */,
+				5B8074F829B7076E00DCE59C /* Configuration */,
 				5BB9352829A7216200AB409B /* Views */,
 				5BB9353529A7227500AB409B /* ViewModels */,
 				5BB9353A29A7232300AB409B /* Models */,
@@ -150,6 +220,8 @@
 				5BB9352A29A7217900AB409B /* StoreInfo */,
 				5BB9352B29A7218900AB409B /* StoreRegistration */,
 				5BB9352C29A7219300AB409B /* StoreReport */,
+				5B80750129B70C6500DCE59C /* Notice */,
+				5B8074F429B706D600DCE59C /* AuthView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,11 +268,12 @@
 		5BB9353529A7227500AB409B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5BB9352D29A7221B00AB409B /* UserManager.swift */,
-				5BB0B0E629AE23DD009A91CD /* UsersManager.swift */,
+				5B80750029B70C5C00DCE59C /* User */,
 				5BB9354C29A7514F00AB409B /* StoreInfo */,
-				5BB9353129A7223600AB409B /* StoreRegistrationManager.swift */,
+				5B8074FF29B70C4F00DCE59C /* StoreRegistration */,
 				5BB9354329A7268000AB409B /* StoreReport */,
+				5B8074FE29B70C4400DCE59C /* Auth */,
+				5B8074FD29B70C3900DCE59C /* Notice */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -213,6 +286,7 @@
 				5BB9353F29A7239000AB409B /* Store.swift */,
 				5BB9353629A7228C00AB409B /* StoreReport.swift */,
 				5BB9353829A722D500AB409B /* StoreRegistration.swift */,
+				5B2C173C29B5C33B003091A9 /* Notice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -238,6 +312,8 @@
 		5BB9354F29A8A54800AB409B /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				5B80750429B71AB600DCE59C /* Mode.swift */,
+				5B80750629B71AC800DCE59C /* Action.swift */,
 				5BB9354D29A8A53200AB409B /* Gukbaps.swift */,
 				5BB0B0E829AE4EF6009A91CD /* UserGrades.swift */,
 			);
@@ -272,8 +348,6 @@
 			);
 			name = GukbapMinister_Admin;
 			packageProductDependencies = (
-				5BB0B0E029AC6AAD009A91CD /* Collections */,
-				5BB0B0E229AC6AAD009A91CD /* OrderedCollections */,
 			);
 			productName = GukbapMinister_Admin;
 			productReference = 5BB9350429A7045800AB409B /* GukbapMinister_Admin.app */;
@@ -304,7 +378,6 @@
 			);
 			mainGroup = 5BB934FB29A7045800AB409B;
 			packageReferences = (
-				5BB0B0DF29AC6AAD009A91CD /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 5BB9350529A7045800AB409B /* Products */;
 			projectDirPath = "";
@@ -378,6 +451,7 @@
 				5BB9354029A7239000AB409B /* Store.swift in Sources */,
 				5BB0B0E729AE23DD009A91CD /* UsersManager.swift in Sources */,
 				5BB9353C29A7233500AB409B /* User.swift in Sources */,
+				5B8074FA29B70C1900DCE59C /* NoticesManager.swift in Sources */,
 				5BB9353729A7228C00AB409B /* StoreReport.swift in Sources */,
 				5BB674BA29AA02BB0067582B /* DownloadedStoreImage.swift in Sources */,
 				5BB9350A29A7045800AB409B /* ContentView.swift in Sources */,
@@ -385,14 +459,23 @@
 				5BB9354B29A7514B00AB409B /* StoreInfoManager.swift in Sources */,
 				5BB9352729A7215700AB409B /* StoreReportManagementView.swift in Sources */,
 				5BB9352E29A7221B00AB409B /* UserManager.swift in Sources */,
+				5B8074FC29B70C3500DCE59C /* NoticeManager.swift in Sources */,
 				5BB9353429A7224300AB409B /* StoreReportsManager.swift in Sources */,
+				5B8074F729B7076100DCE59C /* WindowKey.swift in Sources */,
+				5B80750729B71AC800DCE59C /* Action.swift in Sources */,
+				5B80750329B7143D00DCE59C /* NoticeDetailView.swift in Sources */,
 				5BB9354229A7267A00AB409B /* StoreReportManager.swift in Sources */,
 				5BB9353229A7223700AB409B /* StoreRegistrationManager.swift in Sources */,
 				5BB9353929A722D500AB409B /* StoreRegistration.swift in Sources */,
 				5BB9352329A720FF00AB409B /* StoreInfoManagementView.swift in Sources */,
 				5BB0B0E929AE4EF6009A91CD /* UserGrades.swift in Sources */,
 				5BB9353E29A7235B00AB409B /* Review.swift in Sources */,
+				5B8074F529B706D600DCE59C /* AuthView.swift in Sources */,
+				5B2C173D29B5C33B003091A9 /* Notice.swift in Sources */,
+				5B2C173F29B5C44C003091A9 /* NoticeManagementView.swift in Sources */,
+				5B8074F329B701B700DCE59C /* AuthManager.swift in Sources */,
 				5BB9354529A72D8800AB409B /* StoreReportDetailView.swift in Sources */,
+				5B80750529B71AB600DCE59C /* Mode.swift in Sources */,
 				5BB674B429A9CB480067582B /* MenuEditor.swift in Sources */,
 				5BF2775929AB764400067D98 /* MapUIView.swift in Sources */,
 				5BB9352129A720E700AB409B /* UserManagementView.swift in Sources */,
@@ -528,6 +611,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GukbapMinister_Admin/GukbapMinister_Admin.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -560,6 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GukbapMinister_Admin/GukbapMinister_Admin.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -608,30 +693,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5BB0B0DF29AC6AAD009A91CD /* XCRemoteSwiftPackageReference "swift-collections" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-collections.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5BB0B0E029AC6AAD009A91CD /* Collections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5BB0B0DF29AC6AAD009A91CD /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = Collections;
-		};
-		5BB0B0E229AC6AAD009A91CD /* OrderedCollections */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5BB0B0DF29AC6AAD009A91CD /* XCRemoteSwiftPackageReference "swift-collections" */;
-			productName = OrderedCollections;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5BB934FC29A7045800AB409B /* Project object */;
 }

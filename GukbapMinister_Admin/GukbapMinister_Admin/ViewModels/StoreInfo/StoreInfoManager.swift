@@ -14,11 +14,11 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseStorage
-import SDWebImageSwiftUI
 
 
 
 
+@MainActor
 final class StoreInfoManager: ObservableObject {
     @Published var storeInfo: Store
     
@@ -88,42 +88,38 @@ final class StoreInfoManager: ObservableObject {
                 self?.modified = true
             }
             .store(in: &self.cancellables)
-        
-        loadImageUrl(storeInfo)
     }
     
     //MARK: - Private Methods
     /// SDWebImage가 다운로드 받을 수 있는 형식의 URL생성
-    private func loadImageUrl(_ storeInfo: Store) {
-        //TODO: 이렇게 스토리지 레퍼런스에서 url을 통해 이미지를 로드한다면 나중에는 Store Model의 storeImages 필드가 굳이 필요 없지 않을까 생각해봅니다.
-        if let _ = storeInfo.id {
-            //"storeImages/\(storeInfo.storeName)"하위의 파일들 레퍼런스들을 나열
-            storage.reference().child("storeImages/\(storeInfo.storeName)").listAll { result, error in
-                for ref in result.items {
-                    let storageURL = NSURL.sd_URL(with: ref) as URL?
-                    self.storeImageUrls.append(storageURL!)
-                }
-            }
+    private func loadImageUrl() async throws {
+        
+        let result = try await storage.reference().child("storeImages/\(storeInfo.storeName)").listAll()
+        
+        for ref in result.items {
+            let url = try await ref.downloadURL()
+            self.storeInfo.storeImages.append(url.absoluteString)
         }
+        
     }
     
     /// imageStates를 순회하며 Firebase Stroage에 이미지를 업로드하는 함수
     private func uploadImages()  {
-         for (_, imageState) in self.imageStates {
-             let imageName = UUID().uuidString
+        for (_, imageState) in self.imageStates {
+            let imageName = UUID().uuidString
             let storageRef = storage.reference().child("storeImages/\(self.storeInfo.storeName)/\(imageName)")
-
+            
             switch imageState {
             case .success(let uiImage):
                 let data = uiImage.jpegData(compressionQuality: 0.1)
                 let metadata = StorageMetadata()
                 metadata.contentType = "image/jpg"
+                
                 if let data = data {
                     storageRef.putData(data, metadata: metadata) { (metadata, err) in
                         guard let _ = metadata else {
                             return
                         }
-                        self.storeInfo.storeImages.append(imageName)
                     }
                 }
                 
@@ -134,8 +130,10 @@ final class StoreInfoManager: ObservableObject {
     }
     
     /// Store 정보 추가하는 메서드
-    private func addStoreInfo() {
+    private func addStoreInfo() async {
         do {
+            try await loadImageUrl()
+            
             let _ = try database.collection("Store")
                 .addDocument(from: self.storeInfo)
         }
@@ -145,9 +143,11 @@ final class StoreInfoManager: ObservableObject {
     }
     
     /// Store 정보 수정하는 메서드
-    private func updateStoreInfo() {
+    private func updateStoreInfo() async {
         if let documentId = self.storeInfo.id {
             do {
+                try await loadImageUrl()
+                
                 try database.collection("Store")
                     .document(documentId)
                     .setData(from: self.storeInfo)
@@ -201,11 +201,11 @@ final class StoreInfoManager: ObservableObject {
     
     //MARK: - UI Handler
     
-    func handleDoneTapped() {
+    func handleDoneTapped() async {
         if let _ = self.storeInfo.id {
-            updateStoreInfo()
+            await updateStoreInfo()
         } else {
-            addStoreInfo()
+            await addStoreInfo()
         }
     }
     
