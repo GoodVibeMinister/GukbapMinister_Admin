@@ -98,7 +98,9 @@ final class StoreInfoManager: ObservableObject {
         
         for ref in result.items {
             let url = try await ref.downloadURL()
-            self.storeInfo.storeImages.append(url.absoluteString)
+            if !self.storeInfo.storeImages.contains(url.absoluteString) {
+                self.storeInfo.storeImages.append(url.absoluteString)
+            }
         }
         
     }
